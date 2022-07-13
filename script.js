@@ -1,5 +1,6 @@
 const PICKS=['rock','paper','scrissors'];
 const buttons = document.querySelectorAll(`button`);
+const highligt = document.querySelectorAll('.select');
 
 function computerPlay() {
     let i = Math.floor(Math.random() * 3);
@@ -25,7 +26,7 @@ function playRound(playerSelection, computerSelection){
 
     return result;
 }
-function game(){
+/*function game(){
     let scoreComputer=0,scorePlayer=0,computerPick,playerPick,result;
     for(i=0;i<5;i++){
         computerPick = computerPlay();
@@ -46,12 +47,60 @@ function game(){
 
 
     return 0;   
+}*/
+function decide(player,computer,rounds){
+    if(player === 5)
+        return `player won in ${rounds+1} rounds`;
+    else if(computer === 5)
+        return `computer won in ${rounds+1} rounds`;
+    else 
+        return 'continue';
+    
 }
+function show(score1,score2){
+    console.log("player:" + score1);
+    console.log("computer:" + score2);
+}
+
+    let scoreComputer=0,scorePlayer=0,computerPick,playerPick,result,rounds=0;
+    let logic = 0;
+        buttons.forEach(button => button.addEventListener('click', function(e){
+            computerPick = computerPlay();
+            playerPick = button.className;
+            result = playRound(playerPick,computerPick);
+            highligt.forEach( function(x) {
+                if(x.classList[0] === computerPick){
+                   setTimeout( function(){
+                        x.classList.add(`selected`);
+                    },1);
+                    setTimeout(function() {
+                        x.classList.remove(`selected`);
+                  }, 300);
+
+                }
+                
+            })
+
+            
+        if(result === 'you lost :(')   //calculating the result
+            scoreComputer++;
+        else if(result === 'you won :)')
+            scorePlayer++;
+        show(scorePlayer,scoreComputer);
+        if(decide(scorePlayer,scoreComputer,rounds) !== 'continue'){
+            alert(decide(scorePlayer,scoreComputer,rounds))
+            scoreComputer =0;
+            scorePlayer =0;
+            rounds = 0;
+        }
+        else 
+            rounds++;
+    }))
+ 
+        
+        
+
 function convert( value ){
     let converted = value.toLowerCase();
     return converted;
 }
-buttons.forEach(button => button.addEventListener('click', function(e){
-    console.log(button.className);
-    console.log(playRound(button.className,computerPlay()));
-}))
