@@ -1,0 +1,27 @@
+html {
+    height:100%;
+}
+body{
+    background-color: rgb(144, 106, 106);
+    height: 100%;
+    width: 100%;
+}
+.game{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width:100%;
+}
+.play-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    height: 100%;
+    width: 100%;
+}
+.panel{
+    display: flex;
+    justify-content: center;
+    margin:20px;
+}
