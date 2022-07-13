@@ -1,4 +1,5 @@
 const PICKS=['rock','paper','scrissors'];
+const buttons = document.querySelectorAll(`button`);
 
 function computerPlay() {
     let i = Math.floor(Math.random() * 3);
@@ -44,9 +45,13 @@ function game(){
         console.log('draw :|');
 
 
-    return 0;
+    return 0;   
 }
 function convert( value ){
     let converted = value.toLowerCase();
     return converted;
 }
+buttons.forEach(button => button.addEventListener('click', function(e){
+    console.log(button.className);
+    console.log(playRound(button.className,computerPlay()));
+}))

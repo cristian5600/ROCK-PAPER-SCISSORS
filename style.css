@@ -11,11 +11,13 @@ body{
     flex-direction: column;
     height: 100%;
     width:100%;
+    border: 1cm;
 }
 .play-area{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 50px;
     height: 100%;
     width: 100%;
@@ -25,3 +27,30 @@ body{
     justify-content: center;
     margin:20px;
 }
+.left , .right{
+    display: flex;
+    min-height: 100px;
+    min-width: 300px;
+    border:2px;
+    border-style:groove;
+}
+.rock , .paper , .scrissors{
+    margin:30px;
+    padding: 10px;
+    border:1px;
+    border-style:groove;
+
+
+}
+.signals{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: rgb(0, 208, 35);
+    border-radius: 50%;
+    display: inline-block;
+  }
