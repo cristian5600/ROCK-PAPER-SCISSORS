@@ -1,6 +1,7 @@
 const PICKS=['rock','paper','scrissors'];
 const buttons = document.querySelectorAll(`button`);
 const highligt = document.querySelectorAll('.select');
+const title = document.querySelector(`.panel`);
 
 function computerPlay() {
     let i = Math.floor(Math.random() * 3);
@@ -70,9 +71,7 @@ function show(score1,score2){
             result = playRound(playerPick,computerPick);
             highligt.forEach( function(x) {
                 if(x.classList[0] === computerPick){
-                   setTimeout( function(){
-                        x.classList.add(`selected`);
-                    },1);
+                    x.classList.add(`selected`)
                     setTimeout(function() {
                         x.classList.remove(`selected`);
                   }, 300);
@@ -80,14 +79,15 @@ function show(score1,score2){
                 }
                 
             })
-
-            
+       // title.textContent = result;
         if(result === 'you lost :(')   //calculating the result
             scoreComputer++;
         else if(result === 'you won :)')
             scorePlayer++;
+        title.textContent = `${scorePlayer} - ${scoreComputer}`;
         show(scorePlayer,scoreComputer);
         if(decide(scorePlayer,scoreComputer,rounds) !== 'continue'){
+            title.textContent = decide(scorePlayer,scoreComputer,rounds);
             alert(decide(scorePlayer,scoreComputer,rounds))
             scoreComputer =0;
             scorePlayer =0;
